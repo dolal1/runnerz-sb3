@@ -15,14 +15,11 @@ import java.util.Objects;
 import java.util.Optional;
 
 @Repository
+@RequiredArgsConstructor
+@Slf4j
 public class RunRepository {
 
-    private static final Logger log = LoggerFactory.getLogger(RunRepository.class);
     private final JdbcClient jdbcClient;
-
-    public RunRepository(JdbcClient jdbcClient) {
-        this.jdbcClient = jdbcClient;
-    }
 
     public List<Run> findAll() {
         return jdbcClient.sql("select * from run")
